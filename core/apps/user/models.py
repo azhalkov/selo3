@@ -8,6 +8,7 @@ class User(AbstractUser):
         blank=True,
         max_length=20,
         null=True,
-        verbose_name="Номер телефона")
+        verbose_name="Номер телефона",)
+
     def __str__(self):
-        return self.phone
+        return str(self.phone)
