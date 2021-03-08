@@ -17,11 +17,16 @@ from django.conf  import settings
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', include('apps.user.urls')),
+    path('dom/', include('apps.dom.urls')),
+    path('articul/', include('apps.articul.urls')),
+    path('tr/', TemplateView.as_view(template_name='bloki_html/home.html'), name='tr'),
 ]
 
 if settings.DEBUG:

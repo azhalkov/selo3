@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'apps.user',
+    'apps.dom',
+    'apps.articul',
     'crispy_forms',
+    'rest_framework',
+    'corsheaders',
 ]
 
 
@@ -54,9 +58,22 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://localhost:8080',
+]
+
+
+
 
 TEMPLATES = [
     {
@@ -160,10 +177,11 @@ STATICFILES_FINDERS = (
 
 STATIC_URL = '/static/'
 # STATICFILES_DIRS = [ os.path.join(BASE_DIR, "static"),]
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [STATIC_DIR]
+# STATIC_DIR = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = [STATIC_DIR]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-COMPRESS_ROOT = STATIC_DIR
+COMPRESS_ROOT = STATIC_ROOT
 
 MEDIA_URL = '/media/'
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
