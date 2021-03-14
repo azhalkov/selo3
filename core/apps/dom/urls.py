@@ -5,11 +5,12 @@ from django.conf.urls.static import static
 from django.urls import path
 from django.views.generic import TemplateView
 
-from . import views
-from .views import *
+
+from apps.dom.views import AdresView
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='dom/home.html'), name='dom')
+    path('', TemplateView.as_view(template_name='dom/home.html'), name='dom'),
+    path('adres/', AdresView.as_view(template_name='dom/forms/adres_form.html'), name='adres'),
     # path('add_categori/', CategoriView.as_view(template_name='dom/forms/categori_form.html'),
     #      name='new_categori'),
     # path('add_document/', DomDokumentView.as_view(template_name='dom/forms/document_form.html'),

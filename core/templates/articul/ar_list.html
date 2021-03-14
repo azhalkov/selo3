@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ар лист</title>
+</head>
+<body>
+{% for art in artikul_list %}
+<hr>
+<p>Обявление №: {{ art.artikuls }}</p>
+{% with art.adress.all as albums %}
+            {% if albums %}
+<h5> Модель адрес приложения дом</h5>
+             <ul>
+                   {% for album in albums %}
+                      <li> Город: {{ album.gorod }}</li>
+                    <li> Улица: {{ album.ulica }}</li>
+
+                   {% endfor %}
+                 </ul>
+            {% endif %}
+        {% endwith %}
+    {% endfor %}
+
+
+</body>
+</html>

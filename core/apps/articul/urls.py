@@ -1,17 +1,19 @@
 # apps/articul/urls
-from django.template import Template
+# from django.template import Template
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from django.views.generic import TemplateView
-
-from . import views
+# from . import views
 from .views import *
+from . import views
 
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='articul/home.html'), name='articul')
-    # path('add_categori/', CategoriView.as_view(template_name='dom/forms/categori_form.html'),
+    path('', TemplateView.as_view(template_name='articul/home.html'), name='articul'),
+    path('newart/', ArticulView.as_view(template_name='articul/articul_form.html'), name='newart'),
+    path('artlist/', views.ArtikulListView.as_view(), name='artlist'),
+    path('ar/',views.artikulList, name='ar'),
     #      name='new_categori'),
     # path('add_document/', DomDokumentView.as_view(template_name='dom/forms/document_form.html'),
     #      name='new_document'),
@@ -28,5 +30,5 @@ urlpatterns = [
     # path('partner/', TemplateView.as_view(template_name='dom/info/partner.html'), name='partner'),
     # path('ceni/', TemplateView.as_view(template_name='dom/info/ponjatnie_ceni.html'), name='ceni'),
 
-]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

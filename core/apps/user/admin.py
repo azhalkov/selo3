@@ -5,6 +5,7 @@ from django.contrib.auth.admin import UserAdmin
 from .forms import MyUserCreationForm, MyUserChangeForm
 from .models import User
 
+
 class MyUserAdmin(UserAdmin):
     add_form = MyUserCreationForm
     form = MyUserChangeForm
@@ -19,3 +20,6 @@ class MyUserAdmin(UserAdmin):
     admin.site.site_header = 'СЕЛЬСКАЯ НЕДВИЖИМОСТЬ'
 
 admin.site.register(User, MyUserAdmin)
+
+
+

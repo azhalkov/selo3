@@ -1,5 +1,6 @@
+# apps/articul/models
 from django.db import models
-
+from taggit.managers import TaggableManager
 # Create your models here.
 from apps.user.models import User
 
@@ -14,7 +15,11 @@ class Articul(models.Model):
     status = models.CharField('Статус', max_length=3, default='000')
     kod_phone = models.CharField('Телефонный код', max_length=5, default=86191, help_text='Код стационарного'
                                  'номера телефона населенного пункта, 5 цифр.')
+    data_vidan = models.DateTimeField('Дата выдачи', blank=True, null=True)
     slug = models.SlugField('Ссылка', null=True)
+    is_oplata = models.BooleanField('Оплачено', default=False)
+    zametki = models.TextField('Для заметок', max_length=2000, blank=True)
+    # tags = TaggableManager('Теги', blank=True, )
 
     def nomernew(self):
         nomer = []
@@ -36,8 +41,19 @@ class Articul(models.Model):
         self.nomer = Articul.nomernew(self)
         self.artikuls = '%s%s%s' % (self.kod_phone, self.status, self.nomer)
         self.slug = self.artikuls
+        if self.is_oplata:
+            self.status = '001'
+
         super(Articul, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Артикул'
         verbose_name_plural = 'Артикулы'
+        ordering = ["-artikuls"]
+
+    # def get_absolute_url(self):
+    #     from django.urls import reverse
+    #     return reverse('people.views.details', args=[str(self.id)])
+
+
+
