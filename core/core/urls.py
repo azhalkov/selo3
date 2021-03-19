@@ -28,6 +28,7 @@ urlpatterns = [
     path('articul/', include('apps.articul.urls')),
     path('spravka/', include('apps.spravka.urls')),
     path('dela/', include('apps.delo.urls')),
+    path('picture/', include('apps.picture.urls')),
     path('tr/', TemplateView.as_view(template_name='bloki_html/home.html'), name='tr'),
 ]
 

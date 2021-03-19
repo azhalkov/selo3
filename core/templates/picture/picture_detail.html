@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>picture_detail</title>
+</head>
+<body>
+<h1>picture_detail</h1>
+{% for foto in object_list %}
+{{ foto.title }}
+<img src="{{MEDIA}}{{foto.image.url}}" alt="" height="200" width="310" />
+
+<p>{{ foto.images }}</p>
+
+{% endfor %}
+</body>
+</html>

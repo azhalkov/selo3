@@ -10,9 +10,6 @@ class Map(models.Model):
     pass
 
 
-
-
-
 class Adres(models.Model):
     """ Адрес объекта недвижимости"""
     art = models.ForeignKey(Articul, null=True, on_delete=models.SET_NULL, related_name='adress')

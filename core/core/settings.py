@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "taggit",
     'apps.spravka',
     'apps.delo',
+    'apps.picture',
 ]
 
 TAGGIT_CASE_INSENSITIVE = True

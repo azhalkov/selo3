@@ -8,7 +8,9 @@
 <h1>список артикулов</h1>
 {% for art in object_list %}
 <p>{{ art.userartikul }} - {{ art.artikuls }}</p>
-<a href="">{{ art.slug }}</a>
+<p>------------------------------</p>
+<a href="{{ art.slug }}">{{ art.slug }} </a>
+<p>____________________________________</p>
 <hr>
 
 

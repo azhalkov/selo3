@@ -19,8 +19,17 @@
                    {% endfor %}
                  </ul>
             {% endif %}
+
         {% endwith %}
     {% endfor %}
+
+<p>++++++++++++++++++++++++++++++++++++++++++++++++++</p>
+{% for new in artikul.adress_set.all %}
+<ul>
+
+<li> Город: {{ new.gorod }}</li>
+        {% endfor %}
+    </ul>
 
 
 </body>
